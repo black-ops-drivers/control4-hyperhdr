@@ -1,0 +1,270 @@
+<devicedata>
+  <name>HyperHDR</name>
+  <version>20231022</version>
+  <manufacturer>HyperHDR</manufacturer>
+  <model>HyperHDR</model>
+  <creator>Black Ops Drivers</creator>
+  <control>lua_gen</control>
+  <controlmethod>ip</controlmethod>
+  <driver>DriverWorks</driver>
+  <created>04/18/2023 12:00 AM</created>
+  <modified>10/22/2023 09:38 AM</modified>
+  <minimum_os_version>3.3.0</minimum_os_version>
+  <proxies qty="1">
+    <proxy proxybindingid="5001" name="HyperHDR">light_v2</proxy>
+  </proxies>
+  <composer_categories>
+    <category>Lighting</category>
+  </composer_categories>
+  <config>
+    <script file="driver.lua" encryption="2" jit="1"/>
+    <documentation file="www/documentation/index.html"/>
+    <properties>
+      <property>
+        <name>Cloud</name>
+        <type>LABEL</type>
+        <default>Cloud Settings</default>
+      </property>
+      <property>
+        <name>Automatic Updates</name>
+        <description>Automatic updates are strongly encouraged as this driver uses an unofficial API and is subject to change.</description>
+        <type>LIST</type>
+        <items>
+          <item>Off</item>
+          <item>On</item>
+        </items>
+        <default>On</default>
+      </property>
+      <property>
+        <name>Update Channel</name>
+        <type>LIST</type>
+        <default>Production</default>
+        <items>
+          <item>Production</item>
+          <item>Prerelease</item>
+        </items>
+      </property>
+      <property>
+        <name>Driver</name>
+        <type>LABEL</type>
+        <default>Driver Settings</default>
+      </property>
+      <property>
+        <name>Driver Status</name>
+        <type>STRING</type>
+        <default/>
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Driver Version</name>
+        <type>STRING</type>
+        <default/>
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Log Level</name>
+        <type>LIST</type>
+        <default>3 - Info</default>
+        <items>
+          <item>0 - Fatal</item>
+          <item>1 - Error</item>
+          <item>2 - Warning</item>
+          <item>3 - Info</item>
+          <item>4 - Debug</item>
+          <item>5 - Trace</item>
+          <item>6 - Ultra</item>
+        </items>
+      </property>
+      <property>
+        <name>Log Mode</name>
+        <type>LIST</type>
+        <default>Off</default>
+        <items>
+          <item>Off</item>
+          <item>Print</item>
+          <item>Log</item>
+          <item>Print and Log</item>
+        </items>
+      </property>
+      <property>
+        <name>Server Settings</name>
+        <type>LABEL</type>
+        <default>Server Settings</default>
+      </property>
+      <property>
+        <name>Server IP</name>
+        <type>STRING</type>
+        <default/>
+      </property>
+      <property>
+        <name>Server Port</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>1</minimum>
+        <maximum>65535</maximum>
+        <default>8090</default>
+      </property>
+      <property>
+        <name>Token</name>
+        <type>STRING</type>
+        <default/>
+        <password>true</password>
+      </property>
+    </properties>
+    <actions>
+      <action>
+        <name>Update Drivers</name>
+        <command>UpdateDrivers</command>
+      </action>
+      <action>
+        <name>Disconnect</name>
+        <command>Disconnect</command>
+      </action>
+      <action>
+        <name>Connect</name>
+        <command>Connect</command>
+      </action>
+      <action>
+        <name>Synchronize</name>
+        <command>Synchronize</command>
+      </action>
+    </actions>
+    <commands>
+      <command>
+        <name>Set Current Source</name>
+        <description>Set NAME current source to PARAM1</description>
+        <params>
+          <param>
+            <name>Source</name>
+            <type>DYNAMIC_LIST</type>
+          </param>
+        </params>
+      </command>
+      <command>
+        <name>Set Default On Source</name>
+        <description>Set NAME default on source to PARAM1</description>
+        <params>
+          <param>
+            <name>Source</name>
+            <type>DYNAMIC_LIST</type>
+          </param>
+        </params>
+      </command>
+      <command>
+        <name>Set Effect</name>
+        <description>Set NAME effect to PARAM1</description>
+        <params>
+          <param>
+            <name>Effect</name>
+            <type>DYNAMIC_LIST</type>
+          </param>
+        </params>
+      </command>
+      <command>
+        <name>Set Component State</name>
+        <description>Set NAME component PARAM1 to PARAM2</description>
+        <params>
+          <param>
+            <name>Component</name>
+            <type>DYNAMIC_LIST</type>
+          </param>
+          <param>
+            <name>State</name>
+            <type>LIST</type>
+            <items>
+              <item>On</item>
+              <item>Off</item>
+            </items>
+          </param>
+        </params>
+      </command>
+    </commands>
+  </config>
+  <connections>
+    <connection>
+      <id>5001</id>
+      <facing>6</facing>
+      <connectionname>Light</connectionname>
+      <type>2</type>
+      <consumer>false</consumer>
+      <audiosource>false</audiosource>
+      <videosource>false</videosource>
+      <linelevel>false</linelevel>
+      <classes>
+        <class>
+          <classname>LIGHT_V2</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>200</id>
+      <facing>6</facing>
+      <connectionname>Top Button Link</connectionname>
+      <type>1</type>
+      <consumer>false</consumer>
+      <audiosource>false</audiosource>
+      <videosource>false</videosource>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>BUTTON_LINK</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>201</id>
+      <facing>6</facing>
+      <connectionname>Bottom Button Link</connectionname>
+      <type>1</type>
+      <consumer>false</consumer>
+      <audiosource>false</audiosource>
+      <videosource>false</videosource>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>BUTTON_LINK</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>202</id>
+      <facing>6</facing>
+      <connectionname>Toggle Button Link</connectionname>
+      <type>1</type>
+      <consumer>false</consumer>
+      <audiosource>false</audiosource>
+      <videosource>false</videosource>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>BUTTON_LINK</classname>
+        </class>
+      </classes>
+    </connection>
+  </connections>
+  <capabilities>
+    <advanced_scene_support>false</advanced_scene_support>
+    <brightness_on_mode_preset>true</brightness_on_mode_preset>
+    <brightness_on_mode_previous>true</brightness_on_mode_previous>
+    <brightness_rate_max>100000</brightness_rate_max>
+    <brightness_rate_min>100</brightness_rate_min>
+    <click_rate_min>250</click_rate_min>
+    <click_rates>true</click_rates>
+    <color_on_mode_fade>true</color_on_mode_fade>
+    <color_on_mode_preset>true</color_on_mode_preset>
+    <color_on_mode_previous>true</color_on_mode_previous>
+    <color_rate_behavior>2</color_rate_behavior>
+    <color_rate_max>20000</color_rate_max>
+    <color_rate_min>500</color_rate_min>
+    <dimmer>true</dimmer>
+    <has_extras>true</has_extras>
+    <hold_rate_min>1000</hold_rate_min>
+    <hold_rates>true</hold_rates>
+    <on_off>true</on_off>
+    <ramp_level>true</ramp_level>
+    <set_level>true</set_level>
+    <supports_color>true</supports_color>
+    <supports_color_correlated_temperature>false</supports_color_correlated_temperature>
+    <supports_default_on>true</supports_default_on>
+    <supports_target>true</supports_target>
+  </capabilities>
+</devicedata>
